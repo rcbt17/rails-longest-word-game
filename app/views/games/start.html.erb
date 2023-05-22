@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4 text-center my-5">
+    <% @letters.chars.each do |letter| %>
+      <button class="btn btn-primary"> <%= letter %> </button>
+    <% end %>
+    <hr>
+    <form action="/results" method="POST" data-turbo="false">
+      <div class="my-3">
+        <label class="form-label">Your Answer</label>
+        <input type="text" class="form-control" id="answer" name="answer">
+      </div>
+      <%= hidden_field_tag :original_letters, @letters %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type="submit" value="Submit Answer" class="btn btn-primary float-end">
+    </form>
+  </div>
+</div>
